@@ -6,78 +6,11 @@ public class battles {
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
         
-        System.out.println("Selamat Datang di Hero Battles!\n");
+        System.out.println("Selamat Datang di Hero\n");
 
-        data champion1 = new data();
-        System.out.println("Player 1 \t: Silahkan masukkan Champion!");
-        System.out.print("Name \t\t: ");
-        champion1.setName(scn.nextLine());
+        data champion1 = createChampion(scn, "Player 1");
+        data champion2 = createChampion(scn, "Player 2");
 
-        double hp1;
-        do {
-            System.out.print("HP \t\t: ");
-            hp1 = scn.nextDouble();
-            if (hp1 < 0 || hp1 > 500) {
-                System.out.println("Invalid input! HP harus di antara 0 dan 500.");
-            }
-        } while (hp1 < 0 || hp1 > 500);
-        champion1.setHp(hp1);
-
-        double attack1;
-        do {
-            System.out.print("Attack \t\t: ");
-            attack1 = scn.nextDouble();
-            if (attack1 < 0 || attack1 > 500) {
-                System.out.println("Invalid input! Attack harus di antara 0 dan 500.");
-            }
-        } while (attack1 < 0 || attack1 > 500);
-        champion1.setAttack(attack1);
-
-        double defense1;
-        do {
-            System.out.print("Defense \t: ");
-            defense1 = scn.nextDouble();
-            if (defense1 < 0 || defense1 > 500) {
-                System.out.println("Invalid input! Defense harus di antara 0 dan 500.");
-            }
-        } while (defense1 < 0 || defense1 > 500);
-        champion1.setDefense(defense1);
-
-        System.out.println("\nPlayer 2 \t: Silahkan masukkan Champion!");
-        scn.nextLine();
-        System.out.print("Name \t\t: ");
-        String name2 = scn.nextLine();
-        
-        double hp2;
-        do {
-            System.out.print("HP \t\t: ");
-            hp2 = scn.nextDouble();
-            if (hp2 < 0 || hp2 > 500) {
-                System.out.println("Invalid input! HP harus di antara 0 dan 500.");
-            }
-        } while (hp2 < 0 || hp2 > 500);
-
-        double attack2;
-        do {
-            System.out.print("Attack \t\t: ");
-            attack2 = scn.nextDouble();
-            if (attack2 < 0 || attack2 > 500) {
-                System.out.println("Invalid input! Attack harus di antara 0 dan 500.");
-            }
-        } while (attack2 < 0 || attack2 > 500);
-
-        double defense2;
-        do {
-            System.out.print("Defense \t: ");
-            defense2 = scn.nextDouble();
-            if (defense2 < 0 || defense2 > 500) {
-                System.out.println("Invalid input! Defense harus di antara 0 dan 500.");
-            }
-        } while (defense2 < 0 || defense2 > 500);
-
-        data champion2 = new data(name2, hp2, attack2, defense2);
-
-            
         System.out.print("\n===================================================================================\n");
         
         System.out.println("Bersiaplah!\n" 
@@ -141,5 +74,41 @@ public class battles {
         }
         System.out.println("\n===================================================================================\n");
         scn.close();
+    }
+
+    private static data createChampion(Scanner scn, String player) {
+        System.out.println(player + " \t: Silahkan masukkan Champion!");
+        System.out.print("Masukkan nama Champion: ");
+        String name = scn.nextLine();
+        double hp;
+        do {
+            System.out.print("Masukkan HP (antara 50 dan 1000): ");
+            hp = scn.nextDouble();
+            if (hp < 50 || hp > 1000) {
+                System.out.println("Invalid input! HP harus di antara 50 dan 1000.");
+            }
+        } while (hp < 50 || hp > 1000);
+
+        double attack;
+        do {
+            System.out.print("Masukkan Attack (antara 50 dan 1000): ");
+            attack = scn.nextDouble();
+            if (attack < 50 || attack > 1000) {
+                System.out.println("Invalid input! Attack harus di antara 50 dan 1000.");
+            }
+        } while (attack < 50 || attack > 1000);
+
+        double defense;
+        do {
+            System.out.print("Masukkan Defense (antara 50 dan 1000): ");
+            defense = scn.nextDouble();
+            if (defense < 50 || defense > 1000) {
+                System.out.println("Invalid input! Defense harus di antara 50 dan 1000.");
+            }
+        } while (defense < 50 || defense > 1000);
+        
+        scn.nextLine();
+
+        return new data(name, hp, attack, defense);
     }
 }

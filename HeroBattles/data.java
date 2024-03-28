@@ -14,7 +14,7 @@ public class data {
     }
 
     public data() {
-
+        
     }
 
     public void setName(String name) {
